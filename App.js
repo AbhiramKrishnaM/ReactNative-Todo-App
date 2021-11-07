@@ -1,11 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StatusBar} from "expo-status-bar";
+import React, {useState} from "react";
+import {StyleSheet, View} from "react-native";
+
+import RenderTodo from "./Components/RenderTodo";
 
 export default function App() {
+  const [todos, setTodos] = useState([]);
+  function todoHandler(newTodo) {
+    setTodos((previousTodo) => [...previousTodo, newTodo]);
+  }
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <RenderTodo todoHandler={todoHandler} />
       <StatusBar style="auto" />
     </View>
   );
@@ -13,9 +19,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    marginTop: 50,
   },
 });
