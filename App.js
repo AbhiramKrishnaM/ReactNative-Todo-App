@@ -4,8 +4,15 @@ import {StyleSheet, View} from "react-native";
 
 import RenderTodo from "./Components/RenderTodo";
 import RenderList from "./Components/RenderList";
+import CustomButton from "./Components/CustomButton";
 export default function App() {
   const [todos, setTodos] = useState([]);
+  const [isModal, setIsModal] = useState(false);
+
+  function setModal(value) {
+    setIsModal(value);
+  }
+
   function todoHandler(newTodo) {
     setTodos((previousTodo) => [
       ...previousTodo,
@@ -20,7 +27,15 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <RenderTodo todoHandler={todoHandler} />
+      <CustomButton
+        onPress={setModal.bind(this, true)}
+        title="Enter your Todo"
+      />
+      <RenderTodo
+        setModal={setModal}
+        isModal={isModal}
+        todoHandler={todoHandler}
+      />
       <RenderList todoData={todos} deleteTodo={deleteTodo} />
       <StatusBar style="auto" />
     </View>

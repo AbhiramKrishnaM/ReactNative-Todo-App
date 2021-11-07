@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {TextInput, View, StyleSheet} from "react-native";
+import {TextInput, View, StyleSheet, Modal} from "react-native";
 import CustomButton from "./CustomButton";
 
 const RenderTodo = (props) => {
@@ -8,16 +8,32 @@ const RenderTodo = (props) => {
     setTodo(enteredTodo);
   }
   return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Enter Todos here...."
-          style={styles.inputField}
-          onChangeText={textHandle}
-        />
+    <Modal visible={props.isModal}>
+      <View style={styles.container}>
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Enter Todos here...."
+            style={styles.inputField}
+            onChangeText={textHandle}
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <CustomButton
+            onPress={() => {
+              props.todoHandler(todo);
+              props.setModal(false);
+            }}
+            title="Enter Todo"
+            style={{flex: 1, marginRight: 10}}
+          />
+          <CustomButton
+            type="second"
+            title="Cancel"
+            onPress={props.setModal.bind(this, false)}
+          />
+        </View>
       </View>
-      <CustomButton onPress={props.todoHandler.bind(this, todo)} />
-    </View>
+    </Modal>
   );
 };
 
@@ -34,6 +50,9 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 20,
     color: "orange",
+  },
+  buttonContainer: {
+    flexDirection: "row",
   },
 });
 

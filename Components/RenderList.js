@@ -1,20 +1,24 @@
 import React from "react";
 import {View, Text, FlatList, TouchableOpacity, StyleSheet} from "react-native";
 
+import CustomButton from "./CustomButton";
 const RenderList = (props) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Todos</Text>
+      {props.todoData.length !== 0 ? (
+        <Text style={styles.title}>Todos</Text>
+      ) : (
+        <Text style={styles.title}>No todos </Text>
+      )}
+
       <FlatList
         data={props.todoData}
         renderItem={(itemData) => (
-          <TouchableOpacity
-            activeOpacity={0.5}
-            style={styles.listContainer}
+          <CustomButton
+            title={itemData.item.value}
+            type="second"
             onPress={props.deleteTodo.bind(this, itemData.item.key)}
-          >
-            <Text style={styles.listText}>{itemData.item.value}</Text>
-          </TouchableOpacity>
+          />
         )}
       />
     </View>
