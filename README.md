@@ -3,6 +3,10 @@
 Create New todos
 Delete todos
 
+# App published to expo
+
+[Expo Link: Scan and run](https://expo.dev/@abhiramkrishna/basicTodo)
+
 # ScreenShots
 
 ![Main Page](./readme/1.png)
