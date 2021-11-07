@@ -8,7 +8,11 @@ const RenderList = (props) => {
       <FlatList
         data={props.todoData}
         renderItem={(itemData) => (
-          <TouchableOpacity activeOpacity={0.5} style={styles.listContainer}>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            style={styles.listContainer}
+            onPress={props.deleteTodo.bind(this, itemData.item.key)}
+          >
             <Text style={styles.listText}>{itemData.item.value}</Text>
           </TouchableOpacity>
         )}

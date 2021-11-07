@@ -12,10 +12,16 @@ export default function App() {
       {value: newTodo, key: Math.random().toString()},
     ]);
   }
+
+  function deleteTodo(todoId) {
+    setTodos((todos) => {
+      return todos.filter((todo) => todo.key !== todoId);
+    });
+  }
   return (
     <View style={styles.container}>
       <RenderTodo todoHandler={todoHandler} />
-      <RenderList todoData={todos} />
+      <RenderList todoData={todos} deleteTodo={deleteTodo} />
       <StatusBar style="auto" />
     </View>
   );
