@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Basic todo application with create delete todo functionalities.",
+    "githubUrl": "https://github.com/AbhiramKrishnaM/ReactNative-Todo-App"
   }
 }
