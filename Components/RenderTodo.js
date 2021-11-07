@@ -8,7 +8,7 @@ const RenderTodo = (props) => {
     setTodo(enteredTodo);
   }
   return (
-    <Modal visible={props.isModal}>
+    <Modal visible={props.isModal} animationType="fade">
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <TextInput
@@ -39,7 +39,10 @@ const RenderTodo = (props) => {
 
 const styles = StyleSheet.create({
   container: {
+    alignSelf: "center",
     width: "80%",
+    flex: 1,
+    justifyContent: "center",
   },
   inputContainer: {
     marginBottom: 20,
